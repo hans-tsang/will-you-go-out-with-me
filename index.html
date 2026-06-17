@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>hey… i have a question 🥺</title>
+<meta name="description" content="a very important question…" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🥺%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+  <main class="stage">
+    <!-- ============ SCREEN 1: the ask ============ -->
+    <section class="card" data-screen="1" aria-hidden="false">
+      <div class="dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+      <div class="emoji" aria-hidden="true">🥺</div>
+      <h1 class="title">hey… i have a very important question for you</h1>
+      <p class="subtitle">no pressure. <em>(there is SO much pressure.)</em> 😅</p>
+
+      <div class="ask-buttons">
+        <button class="btn btn-primary" id="yesBtn" type="button">yes!! 🥰</button>
+        <button class="btn btn-ghost" id="noBtn" type="button">no 🙃</button>
+      </div>
+      <p class="hint" id="noHint"></p>
+    </section>
+
+    <!-- ============ SCREEN 2: dream date ============ -->
+    <section class="card hidden" data-screen="2" aria-hidden="true">
+      <div class="dots">
+        <span class="dot"></span>
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+      <div class="emoji" aria-hidden="true">😍</div>
+      <h1 class="title">yay!!! okay, what's your dream date?</h1>
+      <p class="subtitle">i'll pretend it was my idea all along 😌</p>
+
+      <div class="options grid-2" id="dateOptions">
+        <button class="option" data-value="fancy dinner"><span class="opt-emoji">🍝</span><span>fancy dinner</span></button>
+        <button class="option" data-value="movie night"><span class="opt-emoji">🎬</span><span>movie night</span></button>
+        <button class="option" data-value="picnic in the park"><span class="opt-emoji">🧺</span><span>picnic in the park</span></button>
+        <button class="option" data-value="mini golf / games"><span class="opt-emoji">⛳</span><span>mini golf / games</span></button>
+        <button class="option" data-value="cute café hangout"><span class="opt-emoji">☕</span><span>cute café hangout</span></button>
+        <button class="option" data-value="artsy adventure"><span class="opt-emoji">🎨</span><span>artsy adventure</span></button>
+      </div>
+      <button class="btn btn-primary next-btn" data-next="3" disabled>ooh i like it! 💌</button>
+    </section>
+
+    <!-- ============ SCREEN 3: when are you free ============ -->
+    <section class="card hidden" data-screen="3" aria-hidden="true">
+      <div class="dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot active"></span>
+        <span class="dot"></span>
+      </div>
+      <div class="emoji" aria-hidden="true">📅</div>
+      <h1 class="title">love that! when are you actually free tho?</h1>
+      <p class="subtitle">i'm already rearranging my whole life fyi 🫣</p>
+
+      <div class="options grid-2" id="whenOptions">
+        <button class="option" data-value="this weekend"><span>this weekend</span><span class="opt-emoji-bottom">🙈</span></button>
+        <button class="option" data-value="next week"><span>next week</span><span class="opt-emoji-bottom">🗓️</span></button>
+        <button class="option" data-value="pretty soon"><span>pretty soon</span><span class="opt-emoji-bottom">😊</span></button>
+        <button class="option" data-value="anytime for you"><span>anytime for you</span><span class="opt-emoji-bottom">💘</span></button>
+      </div>
+      <button class="btn btn-primary next-btn" data-next="4" disabled>let's make it official 💌</button>
+    </section>
+
+    <!-- ============ SCREEN 4: confirmation ============ -->
+    <section class="card hidden" data-screen="4" aria-hidden="true">
+      <div class="dots">
+        <span class="dot active"></span>
+        <span class="dot active"></span>
+        <span class="dot active"></span>
+        <span class="dot active"></span>
+      </div>
+      <div class="emoji big" aria-hidden="true">🥳</div>
+      <h1 class="title">THANK GOD YOU SAID YES!!</h1>
+      <p class="confetti-line">💐 ✨ 💖 🎉 💕 💖 💐 ✨ 💘</p>
+      <p class="subtitle">i was literally shaking. anyway — it's official:</p>
+
+      <div class="summary">
+        <p>📌 <span class="muted">date:</span> <strong id="sumDate">—</strong></p>
+        <p>🗓️ <span class="muted">when:</span> <strong id="sumWhen">—</strong></p>
+        <p>🙋 <span class="muted">planner:</span> <strong>yours truly 😌</strong></p>
+        <p>🌟 <span class="muted">vibes:</span> <strong>absolutely immaculate</strong></p>
+      </div>
+
+      <p class="final">it's a date!! 💌💌💌</p>
+      <p class="fineprint">this quiz is legally binding. you cannot change your mind.</p>
+      <button class="restart" id="restartBtn" type="button">↺ start over (why would you though)</button>
+    </section>
+  </main>
+
+  <div class="floating-hearts" aria-hidden="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
