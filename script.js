@@ -3,7 +3,10 @@ const state = {
   date: null,
   when: null,
   noDodges: 0,
+  submitted: false,
 };
+
+const SUBMIT_ENDPOINT = 'https://date-ask-tg.vercel.app/api/submit';
 
 const noTaunts = [
   "the no button is shy 🥺",
@@ -91,8 +94,11 @@ function wireOptions(containerId, key, nextBtnSelector) {
 
   nextBtn.addEventListener('click', () => {
     const next = parseInt(nextBtn.dataset.next, 10);
-    if (next === 4) renderSummary();
-    if (next === 4) burstHearts(30);
+    if (next === 4) {
+      renderSummary();
+      burstHearts(30);
+      submitToTelegram();
+    }
     showScreen(next);
   });
 }
@@ -106,11 +112,31 @@ function renderSummary() {
   document.getElementById('sumWhen').textContent = state.when || '—';
 }
 
+// Fire-and-forget submission to the Telegram proxy.
+// Silent on failure so the celebration screen still feels magical.
+function submitToTelegram() {
+  if (state.submitted) return;
+  state.submitted = true;
+  try {
+    fetch(SUBMIT_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        date: state.date,
+        when: state.when,
+        noDodges: state.noDodges,
+      }),
+      keepalive: true,
+    }).catch(() => { /* silent */ });
+  } catch (_) { /* silent */ }
+}
+
 // ---------- restart ----------
 document.getElementById('restartBtn').addEventListener('click', () => {
   state.date = null;
   state.when = null;
   state.noDodges = 0;
+  state.submitted = false;
   // reset selections
   document.querySelectorAll('.option.selected').forEach(o => o.classList.remove('selected'));
   document.querySelectorAll('.next-btn').forEach(b => b.disabled = true);
