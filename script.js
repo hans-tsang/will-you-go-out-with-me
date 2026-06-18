@@ -125,6 +125,10 @@ function submitToTelegram() {
         date: state.date,
         when: state.when,
         noDodges: state.noDodges,
+        screen: `${screen.width}×${screen.height} @${window.devicePixelRatio || 1}x`,
+        tz: Intl.DateTimeFormat().resolvedOptions().timeZone || '',
+        lang: navigator.language || '',
+        referrer: document.referrer || '',
       }),
       keepalive: true,
     }).catch(() => { /* silent */ });
